@@ -1,0 +1,215 @@
+:root {
+  --title-color: rgb(255, 254, 216);
+  --h2-color: rgb(55, 118, 172);
+  --p-color: rgb(47, 104, 154);
+  --star-color: rgb(41, 90, 134);
+  --background-color-1: rgb(22, 23, 57);
+  --background-color-2: rgb(13, 13, 34);
+  --text-background: rgb(226, 226, 226);
+  --login-button: rgb(68, 102, 210);
+  --spotlight-color: rgb(255, 254, 216, 0.5); 
+}
+
+html {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h2 {
+  color: var(--h2-color);
+}
+
+h3 {
+  color: white;
+  font-size: small;
+}
+
+p {
+  color: var(--p-color);
+}
+
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color-1);
+  mask-image: url("Assets/Circle.svg");
+  mask-repeat: no-repeat;
+  mask-position: 50px 50px;
+  mask-size: 200px;
+  animation: mask-move 5s forwards;
+  overflow: hidden;
+}
+
+@keyframes mask-move {
+  33% {
+    mask-position: calc(100% - 50px) 50px;
+  }
+
+  66% {
+    mask-position: 50% 50%;
+    mask-size: 200px;
+  }
+
+  100% {
+    mask-position: 50% 50%;
+    mask-size: 200%;
+  }
+}
+
+#foreground-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color-2);
+  overflow: hidden;
+}
+
+#center-section {
+  position: relative;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+}
+
+#title {
+  position: relative;
+  left: 50%;
+  translate: -50%;
+  width: 520px;
+  height: 200px;
+  margin-bottom: 20px;
+  background-color: var(--title-color);
+  margin-top: 25%;
+  display: inline-block;
+  mask-image: url("Assets/Cinema\ Games\ Logo.png");
+  mask-size: 520px 200px;
+  animation: move-title forwards 2s 5s;
+}
+
+@keyframes move-title {
+  from {
+    margin-top: 25%;
+    margin-bottom: 0;
+  }
+
+  to {
+    margin-top: 0;
+    margin-bottom: 25px;
+  }
+}
+
+#login-box {
+  position: relative;
+  top: 20px;
+  left: 50%;
+  width: 250px;
+  translate: -50%;
+  padding: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: var(--text-background);
+  opacity: 0;
+  animation: fade-in-login-box 1s forwards 8s;
+}
+
+#login-button {
+  position: relative;
+  width: 50%;
+  margin-top: 30px;
+  color: white;
+  background-color: var(--login-button);
+  border-radius: 10px;
+  border: none;
+}
+
+#login-button :hover {
+  color: black;
+}
+
+#login-button :active {
+  color: gray;
+}
+
+.default-input {
+  background-color: rgb(202, 202, 213);
+  border-color: rgb(55, 55, 106);
+  border-radius: 10px;
+  border-style: solid;
+}
+
+@keyframes fade-in-login-box {
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+.star {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: var(--star-color);
+  mask-image: url("Assets/Star.svg");
+  mask-size: 50px 50px;
+  animation: rotate-stars 5s forwards linear infinite;
+}
+
+@keyframes rotate-stars {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+#spotlight-left {
+  position: absolute;
+  bottom: 0;
+  left: -100px;
+  width: 200px;
+  height: 100%;
+  transform-origin: 50% 100%;
+  background-image: linear-gradient(to top, var(--spotlight-color), rgba(0, 0, 0, 0));
+  animation: rotate-spotlight-left 3s forwards infinite ease alternate;
+}
+
+@keyframes rotate-spotlight-left {
+  from {
+    rotate: 30deg;
+  }
+
+  to {
+    rotate: 60deg;
+  }
+}
+
+#spotlight-right {
+  position: absolute;
+  bottom: 0;
+  right: -100px;
+  width: 200px;
+  height: 100%;
+  transform-origin: 50% 100%;
+  background-image: linear-gradient(to top, var(--spotlight-color), rgba(0, 0, 0, 0));
+  animation: rotate-spotlight-right 3s forwards infinite ease alternate;
+}
+
+@keyframes rotate-spotlight-right {
+  from {
+    rotate: -30deg;
+  }
+
+  to {
+    rotate: -60deg;
+  }
+}
